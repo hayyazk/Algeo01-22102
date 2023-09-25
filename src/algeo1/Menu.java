@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Menu {
 
 	public static void menuSPL() {
-		int submenu;
+		int subMenu;
 
 		Scanner userInput = new Scanner(System.in);
 
@@ -16,24 +16,24 @@ public class Menu {
 				+ "4. Kaidah Cramer\n"
 				+ "5. Kembali ke menu utama");
 		System.out.print("Pilihan metode : ");
-		submenu = userInput.nextInt();
+		subMenu = userInput.nextInt();
 		System.out.println();
-		if (submenu == 5) {
+		if (subMenu == 5) {
 			daftarMenu();
 		}
 	}
 
 	public static int menuInput() {
-		int submenu;
+		int subMenu;
 
 		Scanner userInput = new Scanner(System.in);
 		System.out.println("\n1. Input dari Keyboard");
 		System.out.println("2. Input dari File\n==============");
 		System.out.print("Masukan : ");
 
-		submenu = userInput.nextInt();
+		subMenu = userInput.nextInt();
 
-		return submenu;
+		return subMenu;
 
 	}
 
@@ -41,13 +41,13 @@ public class Menu {
 		Scanner userInput = new Scanner(System.in);
 		System.out.print("\nMasukkan nama file (.txt) (Cth : a1.txt) : ");
 
-		String submenu = userInput.nextLine();
+		String subMenu = userInput.nextLine();
 
-		return submenu;
+		return subMenu;
 	}
 
 	public static void menuDeterminan() {
-		int submenu;
+		int subMenu;
 
 		Scanner userInput = new Scanner(System.in);
 
@@ -56,15 +56,15 @@ public class Menu {
 				+ "2. Metode ekspansi kofaktor\n"
 				+ "3. Kembali ke menu utama");
 		System.out.print("Pilihan metode : ");
-		submenu = userInput.nextInt();
+		subMenu = userInput.nextInt();
 		System.out.println();
-		if (submenu == 3) {
+		if (subMenu == 3) {
 			daftarMenu();
 		}
 	}
 
 	public static void menuInverse() {
-		int submenu;
+		int subMenu;
 
 		Scanner userInput = new Scanner(System.in);
 
@@ -73,54 +73,54 @@ public class Menu {
 				+ "2. Metode adjoint\n"
 				+ "3. Kembali ke menu utama");
 		System.out.print("Pilihan metode : ");
-		submenu = userInput.nextInt();
+		subMenu = userInput.nextInt();
 		System.out.println();
-		if (submenu == 3) {
+		if (subMenu == 3) {
 			daftarMenu();
 		}
 	}
 
 	public static void menuInterPolinom() {
-		int submenu;
+		int subMenu;
 
 		Scanner userInput = new Scanner(System.in);
 
 		System.out.println("MENU\n"
 				+ "0. Kembali ke menu utama");
 		System.out.print("Pilihan metode : ");
-		submenu = userInput.nextInt();
+		subMenu = userInput.nextInt();
 		System.out.println();
-		if (submenu == 0) {
+		if (subMenu == 0) {
 			daftarMenu();
 		}
 	}
 
 	public static void menuInterBS() {
-		int submenu;
+		int subMenu;
 
 		Scanner userInput = new Scanner(System.in);
 
 		System.out.println("MENU\n"
 				+ "0. Kembali ke menu utama");
 		System.out.print("Pilihan metode : ");
-		submenu = userInput.nextInt();
+		subMenu = userInput.nextInt();
 		System.out.println();
-		if (submenu == 0) {
+		if (subMenu == 0) {
 			daftarMenu();
 		}
 	}
 
 	public static void menuRegresi() {
-		int submenu;
+		int subMenu;
 
 		Scanner userInput = new Scanner(System.in);
 
 		System.out.println("MENU\n"
 				+ "0. Kembali ke menu utama");
 		System.out.print("Pilihan metode : ");
-		submenu = userInput.nextInt();
+		subMenu = userInput.nextInt();
 		System.out.println();
-		if (submenu == 0) {
+		if (subMenu == 0) {
 			daftarMenu();
 		}
 	}
