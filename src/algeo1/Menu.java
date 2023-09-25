@@ -7,7 +7,7 @@ public class Menu {
 	public static void menuSPL() {
 		int submenu;
 
-		Scanner s = new Scanner(System.in);
+		Scanner userInput = new Scanner(System.in);
 
 		System.out.println("MENU\n"
 				+ "1. Metode eliminasi Gauss\n"
@@ -15,8 +15,8 @@ public class Menu {
 				+ "3. Metode matriks balikan\n"
 				+ "4. Kaidah Cramer\n"
 				+ "5. Kembali ke menu utama");
-		System.out.print("Pilihan metode: ");
-		submenu = s.nextInt();
+		System.out.print("Pilihan metode : ");
+		submenu = userInput.nextInt();
 		System.out.println();
 		if (submenu == 5) {
 			daftarMenu();
@@ -26,22 +26,22 @@ public class Menu {
 	public static int menuInput() {
 		int submenu;
 
-		Scanner s = new Scanner(System.in);
+		Scanner userInput = new Scanner(System.in);
 		System.out.println("\n1. Input dari Keyboard");
 		System.out.println("2. Input dari File\n==============");
-		System.out.print("Masukan: ");
+		System.out.print("Masukan : ");
 
-		submenu = s.nextInt();
+		submenu = userInput.nextInt();
 
 		return submenu;
 
 	}
 
 	public static String inputFile() {
-		Scanner s = new Scanner(System.in);
+		Scanner userInput = new Scanner(System.in);
 		System.out.print("\nMasukkan nama file (.txt) (Cth : a1.txt) : ");
 
-		String submenu = s.nextLine();
+		String submenu = userInput.nextLine();
 
 		return submenu;
 	}
@@ -49,14 +49,14 @@ public class Menu {
 	public static void menuDeterminan() {
 		int submenu;
 
-		Scanner s = new Scanner(System.in);
+		Scanner userInput = new Scanner(System.in);
 
 		System.out.println("MENU\n"
 				+ "1. Metode reduksi baris\n"
 				+ "2. Metode ekspansi kofaktor\n"
 				+ "3. Kembali ke menu utama");
-		System.out.print("Pilihan metode: ");
-		submenu = s.nextInt();
+		System.out.print("Pilihan metode : ");
+		submenu = userInput.nextInt();
 		System.out.println();
 		if (submenu == 3) {
 			daftarMenu();
@@ -66,24 +66,69 @@ public class Menu {
 	public static void menuInverse() {
 		int submenu;
 
-		Scanner s = new Scanner(System.in);
+		Scanner userInput = new Scanner(System.in);
 
 		System.out.println("MENU\n"
 				+ "1. Metode eliminiasi Gauss-Jordan\n"
 				+ "2. Metode adjoint\n"
 				+ "3. Kembali ke menu utama");
-		System.out.print("Pilihan metode: ");
-		submenu = s.nextInt();
+		System.out.print("Pilihan metode : ");
+		submenu = userInput.nextInt();
 		System.out.println();
 		if (submenu == 3) {
 			daftarMenu();
 		}
 	}
 
+	public static void menuInterPolinom() {
+		int submenu;
+
+		Scanner userInput = new Scanner(System.in);
+
+		System.out.println("MENU\n"
+				+ "0. Kembali ke menu utama");
+		System.out.print("Pilihan metode : ");
+		submenu = userInput.nextInt();
+		System.out.println();
+		if (submenu == 0) {
+			daftarMenu();
+		}
+	}
+
+	public static void menuInterBS() {
+		int submenu;
+
+		Scanner userInput = new Scanner(System.in);
+
+		System.out.println("MENU\n"
+				+ "0. Kembali ke menu utama");
+		System.out.print("Pilihan metode : ");
+		submenu = userInput.nextInt();
+		System.out.println();
+		if (submenu == 0) {
+			daftarMenu();
+		}
+	}
+
+	public static void menuRegresi() {
+		int submenu;
+
+		Scanner userInput = new Scanner(System.in);
+
+		System.out.println("MENU\n"
+				+ "0. Kembali ke menu utama");
+		System.out.print("Pilihan metode : ");
+		submenu = userInput.nextInt();
+		System.out.println();
+		if (submenu == 0) {
+			daftarMenu();
+		}
+	}
+	
 	public static void daftarMenu() {
 		int menu;
 
-		Scanner s = new Scanner(System.in);
+		Scanner userInput = new Scanner(System.in);
 
 		System.out.println("MENU");
 		System.out.println("1. Sistem Persamaaan Linier\n"
@@ -94,14 +139,14 @@ public class Menu {
 				+ "6. Regresi linier berganda\n"
 				+ "7. Keluar");
 
-		System.out.print("Pilihan menu: ");
-		menu = s.nextInt();
+		System.out.print("Pilihan menu : ");
+		menu = userInput.nextInt();
 		System.out.println();
 
 		while (menu < 1 || menu > 7) {
 			System.out.println("Input tidak valid.");
 			System.out.print("Pilihan menu: ");
-			menu = s.nextInt();
+			menu = userInput.nextInt();
 		}
 
 		switch (menu) {
@@ -138,6 +183,42 @@ public class Menu {
 					// userInput = nextInt();
 					System.out.println("untuk Mengisi Invers");
 				} else if (c == 2) {
+					inputFile();
+
+				}
+				break;
+			case 4:
+				 menuInterPolinom();
+				int d = menuInput();
+				if (d == 1) {
+					// Scanner userInput = new Scanner(System.in);
+					// userInput = nextInt();
+					System.out.println("untuk Mengisi Interpolarisai Polinom");
+				} else if (d == 2) {
+					inputFile();
+
+				}
+				break;
+			case 5:
+				 menuInterBS();
+				int e = menuInput();
+				if (e == 1) {
+					// Scanner userInput = new Scanner(System.in);
+					// userInput = nextInt();
+					System.out.println("untuk Mengisi Interpolasi Bicubic Spline");
+				} else if (e == 2) {
+					inputFile();
+
+				}
+				break;
+			case 6:
+				 menuRegresi();
+				int f = menuInput();
+				if (f == 1) {
+					// Scanner userInput = new Scanner(System.in);
+					// userInput = nextInt();
+					System.out.println("untuk Mengisi Regresi linier berganda");
+				} else if (f == 2) {
 					inputFile();
 
 				}
