@@ -1,10 +1,9 @@
-package algeo1;
+package Algeo1;
 
 import java.util.*;
-import java.io.*;
 import java.lang.Math;
-import algeo1.Determinan;
-import algeo1.*;
+import Algeo1.Menu;
+import Algeo1.*;
 
 public class Matriks {
 
@@ -413,7 +412,7 @@ public void MenuDeterminan(){
         Menu daftar = new Menu();
         daftar.daftarMenu();
     }
-    if (op==2) {
+    else if(op==2) {
         Matriks m = new Matriks();
         m.BacaMatriks(M);
     } else if (op==1){

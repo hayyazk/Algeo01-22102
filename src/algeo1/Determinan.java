@@ -1,4 +1,4 @@
-package algeo1;
+package Algeo1;
 
 //import algeo1.Matriks;
 

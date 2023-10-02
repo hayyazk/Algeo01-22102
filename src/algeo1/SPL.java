@@ -1,6 +1,6 @@
-package algeo1;
+package Algeo1;
 import java.util.*;
-//import algeo1.Matriks;
+import Algeo1.*;
 
 public class SPL {
     public static final Scanner userInput = new Scanner(System.in);

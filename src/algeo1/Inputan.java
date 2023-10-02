@@ -1,4 +1,4 @@
-package algeo1;
+package Algeo1;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

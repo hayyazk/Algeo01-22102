@@ -1,12 +1,11 @@
-package algeo1;
+package Algeo1;
 
 import java.util.Scanner;
-import algeo1.*;
+//import Algeo1.SPL;
 
-class Menu {
+public class Menu {
 
-	public static final SPL spl = new SPL();
-/* 
+	/*
 	public static int menuSPL() {
 		int subMenu;
 
@@ -143,6 +142,8 @@ class Menu {
     }
 	 */
 	public static void daftarMenu() {
+		Algeo1.SPL spl = new Algeo1.SPL();
+		Algeo1.Matriks M = new Algeo1.Matriks();
 		int menu;
 		boolean gas = true;
 
@@ -170,6 +171,7 @@ class Menu {
 		while(gas){
 		switch (menu) {
 			case 1:
+				//SPL spl = new SPL();
 				spl.menuSPL();
 				/*int a = menuSPL();
 				if (a == 1) {
@@ -219,7 +221,7 @@ class Menu {
                 }*/
 				break;
 			case 2:
-				Matriks M = new Matriks();
+
 				M.MenuDeterminan();
 				
 				break;
