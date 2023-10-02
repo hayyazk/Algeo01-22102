@@ -1,9 +1,12 @@
 package algeo1;
 
 import java.util.Scanner;
+import algeo1.*;
 
-public class Menu {
+class Menu {
 
+	public static final SPL spl = new SPL();
+/* 
 	public static int menuSPL() {
 		int subMenu;
 
@@ -138,7 +141,7 @@ public class Menu {
             Matriks.ketikFile(file, M);
         }
     }
-	
+	 */
 	public static void daftarMenu() {
 		int menu;
 		boolean gas = true;
@@ -167,8 +170,8 @@ public class Menu {
 		while(gas){
 		switch (menu) {
 			case 1:
-				menuSPL();
-				int a = menuSPL();
+				spl.menuSPL();
+				/*int a = menuSPL();
 				if (a == 1) {
                     int inputspl = menuInput();
                     if (inputspl == 1) {
@@ -213,22 +216,15 @@ public class Menu {
                     SPL.SPLCramer("x");
                 } else {
                     System.out.println("Perintah tidak tersedia");
-                }
+                }*/
 				break;
 			case 2:
-				menuDeterminan();
-					int b = menuDeterminan();
-					if (b == 1) {
-						Matriks Determinan.DeterminanOBE();
-					} else if (b == 2) {
-						Matriks Determinan.DeterminanKofaktor();
-					} else {
-						System.out.println("Perintah tidak tersedia");
-					}
+				Matriks M = new Matriks();
+				M.MenuDeterminan();
 				
 				break;
 			case 3:
-				menuInverse();
+				/*menuInverse();
 				int c = menuInverse();
 					if (c == 1) {
 					int Invers.InversAdjoin();
@@ -237,10 +233,10 @@ public class Menu {
 					} else {
 						System.out.println("Perintah tidak tersedia");
 					}
-				
+				*/
 				break;
 			case 4:
-				 menuInterPolinom();
+				/*menuInterPolinom();
 				int d = menuInterPolinom();
 					if (d == 1) {
 					int Invers.InversAdjoin();
@@ -249,10 +245,10 @@ public class Menu {
 					} else {
 						System.out.println("Perintah tidak tersedia");
 					}
-				
+				*/
 				break;
 			case 5:
-				 menuInterBS();
+				 /*menuInterBS();
 				int e = menuInterBS();;
 					if (c == 1) {
 					int Invers.InversAdjoin();
@@ -261,10 +257,10 @@ public class Menu {
 					} else {
 						System.out.println("Perintah tidak tersedia");
 					}
-				
+				*/
 				break;
 			case 6:
-				 menuRegresi();
+				/* menuRegresi();
 				int f = menuRegresi();
 					if (c == 1) {
 					int Invers.InversAdjoin();
@@ -273,7 +269,7 @@ public class Menu {
 					} else {
 						System.out.println("Perintah tidak tersedia");
 					}
-				
+				*/
 				break;
 			case 7:
 				System.exit(0);
