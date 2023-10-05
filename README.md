@@ -41,7 +41,7 @@ Menu dalam program :
 ## Cara Run Program
 1.  Run Program 
     - Masuk ke dalam folder bin dan jalankan perintah di CMD ketik "java algeo1/Main"
-    - Apabila ingin mengcompile ulang, sangat disarankan untuk mengcompile ulang karena sering kali error :)
+    - Apabila ingin mengcompile ulang, sangat disarankan untuk jangan mengcompile ulang karena sering kali error :)
     - Apabila akan di run menggunakan IDE atau aplikasi lainnya maka caranya mengikuti aplikasi tersebut
 
 2.  Masukkan menu dan submenu penyelesaian matriks yang diinginkan dengan mengetik angka 1-9
