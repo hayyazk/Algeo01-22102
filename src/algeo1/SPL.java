@@ -175,7 +175,7 @@ public class SPL {
 		int i;
 		M = GaussSPL(M);
 		for (i = 1; i < M.length; i++){
-			EliminasiOBEjordan(M, i);
+			M = EliminasiOBEjordan(M, i);
 		}
 		return M;
 	}
