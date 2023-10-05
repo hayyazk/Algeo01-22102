@@ -266,10 +266,10 @@ public class SPL {
 					}
 					if (solusi[j] == "Parametrik"){
 						if (firstparam && M[i][M[0].length-1]==0){
-							solusi[now] = solusi[now] +" "+String.valueOf(M[i][j]*-1)+"X"+String.valueOf(j+1);
+							solusi[now] = solusi[now] +" "+String.format("%.4f",M[i][j]*-1)+"X"+String.valueOf(j+1);
 							firstparam = false;
 						} else {
-							solusi[now] = solusi[now] +" + "+String.valueOf(M[i][j]*-1)+"X"+String.valueOf(j+1);
+							solusi[now] = solusi[now] +" + "+String.format("%.4f",M[i][j]*-1)+"X"+String.valueOf(j+1);
 						} 
 					}
 				}
@@ -338,10 +338,10 @@ public class SPL {
 					}
 					if (solusi[j] == "Parametrik"){
 						if (firstparam && M[i][M[0].length-1]==0){
-							solusi[now] = solusi[now] +" "+String.valueOf(M[i][j]*-1)+"X"+String.valueOf(j+1);
+							solusi[now] = solusi[now] +" "+String.format("%.4f",M[i][j]*-1)+"X"+String.valueOf(j+1);
 							firstparam = false;
 						} else {
-							solusi[now] = solusi[now] +" + "+String.valueOf(M[i][j]*-1)+"X"+String.valueOf(j+1);
+							solusi[now] = solusi[now] +" + "+String.format("%.4f",M[i][j]*-1)+"X"+String.valueOf(j+1);
 						} 
 					}
 				}
