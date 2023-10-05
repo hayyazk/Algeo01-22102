@@ -112,7 +112,11 @@ public class SPL {
 		}
 		j=0;
 		while (M[indeks][j] != 1 && j < M[0].length){
-			j+=1;
+			if (M[indeks][j] != 1) {
+				j++;
+			} else {
+				break;
+			}
 		}
 		if (j < M[0].length){
 			for (i=indeks+1;i < M.length;i++){
