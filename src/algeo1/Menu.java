@@ -343,7 +343,7 @@ public class Menu {
 			System.out.println("Masukkan titik-titik yang akan diinterpolasi: ");
 			titik = InputOutput.readKeyboard(n, 2);
 			System.out.println("Masukkan x yang akan ditaksir fungsinya: ");
-			x = userInput.nextInt();
+			x = userInput.nextDouble();
 			InterPolinom.solInterPolinom(titik, x);
 		} else if (a == 2) {
 			String file = inputFile();
