@@ -1,13 +1,90 @@
-package Algeo1;
+package algeo1;
 
 import java.util.Scanner;
-//import Algeo1.SPL;
 
 public class Menu {
-
-	/*
-	public static int menuSPL() {
+	
+	public static int menuInput() {
 		int subMenu;
+
+		Scanner userInput = new Scanner(System.in);
+		System.out.println("\n1. Input dari Keyboard");
+		System.out.println("2. Input dari File");
+		System.out.println("3. Kembali ke menu sebelumnya\n==============");
+		System.out.print("Masukan : ");
+
+		subMenu = userInput.nextInt();
+		
+		while (subMenu < 1 || subMenu > 3) {
+			System.out.println("Masukan salah, silahkan ulangi input.");
+			System.out.println("\n1. Input dari Keyboard");
+			System.out.println("2. Input dari File");
+			System.out.println("3. Kembali ke menu sebelumnya\n==============");
+			System.out.print("Masukan : ");
+
+			subMenu = userInput.nextInt();
+		}
+
+		return subMenu;
+	}
+	
+	public static int menuOutput() {
+		int subMenu;
+
+		Scanner userInput = new Scanner(System.in);
+		System.out.println("\n1. Output ke Terminal");
+		System.out.println("2. Output ke File\n==============");
+		System.out.print("Masukan : ");
+
+		subMenu = userInput.nextInt();
+		
+		while (subMenu < 1 || subMenu > 2) {
+			System.out.println("Masukan salah, silahkan ulangi input.");
+			System.out.println("\n1. Output ke Terminal");
+			System.out.println("2. Output ke File\n==============");
+			System.out.print("Masukan : ");
+
+			subMenu = userInput.nextInt();
+		}
+
+		return subMenu;
+	}
+	
+	public static String inputFile() {
+		Scanner userInput = new Scanner(System.in);
+		System.out.print("\nMasukkan path file : ");
+
+		String file = userInput.nextLine();
+		
+		return file;
+	}
+	
+	public static void startAgain() {
+		Scanner userInput = new Scanner(System.in);
+		System.out.println("\n===================");
+		System.out.println("Kembali ke menu utama? (1 = iya, 2 = tidak)");
+		System.out.print("Input = ");
+		int a = userInput.nextInt();
+		while (true) {
+			if (a == 1) {
+				daftarMenu();
+				break;
+			} else if (a == 2) {
+				System.exit(0);
+				break;
+			} else {
+				System.out.println("Input tidak dikenal, silahkan ulangi masukan.");
+				System.out.println("Kembali ke menu utama? (iya = y, tidak = n)");
+				System.out.print("Input = ");
+				a = userInput.nextInt();
+			}
+		}
+	}
+
+	public static void menuSPL() {
+		int subMenu, a;
+		String file;
+		double[][] matrix;
 
 		Scanner userInput = new Scanner(System.in);
 
@@ -20,37 +97,122 @@ public class Menu {
 		System.out.print("Pilihan metode : ");
 		subMenu = userInput.nextInt();
 		System.out.println();
-		if (subMenu == 5) {
-			daftarMenu();
+		
+		while (subMenu < 1 || subMenu > 6) {
+			System.out.println("Masukan tidak valid, silahkan ulangi.");
+			System.out.println("MENU\n"
+					+ "1. Metode eliminasi Gauss\n"
+					+ "2. Metode eliminasi Gauss-Jordan\n"
+					+ "3. Metode matriks balikan\n"
+					+ "4. Kaidah Cramer\n"
+					+ "5. Kembali ke menu utama");
+			System.out.print("Pilihan metode : ");
+			subMenu = userInput.nextInt();
+			System.out.println();
 		}
-		return subMenu;
+		
+		switch(subMenu) {
+		case 1:
+			a = menuInput();
+			if (a == 1) {
+				System.out.println("Masukkan jumlah baris: ");
+				int m = userInput.nextInt();
+				System.out.println("Masukkan jumlah kolom: ");
+				int n = userInput.nextInt();
+				matrix = InputOutput.readKeyboard(m, n);
+				SPL.SPLGauss(matrix);
+				
+			} else if (a == 2) {
+				file = inputFile();
+				matrix = InputOutput.bacaFileSPL(file);
+				SPL.SPLGauss(matrix);
+			} else if (a == 3) {
+				menuSPL();
+			}
+			break;
+		case 2:
+			a = menuInput();
+			if (a == 1) {
+				System.out.println("Masukkan jumlah baris: ");
+				int m = userInput.nextInt();
+				System.out.println("Masukkan jumlah kolom: ");
+				int n = userInput.nextInt();
+				matrix = InputOutput.readKeyboard(m, n);
+				SPL.SPLGaussJordan(matrix);
+				
+			} else if (a == 2) {
+				file = inputFile();
+				matrix = InputOutput.bacaFileSPL(file);
+				SPL.SPLGaussJordan(matrix);
+			} else if (a == 3) {
+				menuSPL();
+			}
+			break;
+		case 3:
+			a = menuInput();
+			if (a == 1) {
+				System.out.println("Masukkan jumlah baris: ");
+				int m = userInput.nextInt();
+				System.out.println("Masukkan jumlah kolom: ");
+				int n = userInput.nextInt();
+				if (m != n-1) {
+					System.out.println("Solusi tidak dapat ditemukan dengan metode ini, silahkan gunakan metode yang lain.");
+					menuSPL();
+					break;
+				}
+				matrix = InputOutput.readKeyboard(m, n);
+				SPL.SPLInverse(matrix);
+				
+			} else if (a == 2) {
+				file = inputFile();
+				matrix = InputOutput.bacaFileSPL(file);
+				if (matrix.length != matrix[0].length-1) {
+					System.out.println("Solusi tidak dapat ditemukan dengan metode ini, silahkan gunakan metode yang lain.");
+					menuSPL();
+					break;
+				}
+				SPL.SPLInverse(matrix);
+			} else if (a == 3) {
+				menuSPL();
+			}
+			break;
+		case 4:
+			a = menuInput();
+			if (a == 1) {
+				System.out.println("Masukkan jumlah baris: ");
+				int m = userInput.nextInt();
+				System.out.println("Masukkan jumlah kolom: ");
+				int n = userInput.nextInt();
+				if (m != n-1) {
+					System.out.println("Solusi tidak dapat ditemukan dengan metode ini, silahkan gunakan metode yang lain.");
+					menuSPL();
+					break;
+				}
+				matrix = InputOutput.readKeyboard(m, n);
+				SPL.SPLCramer(matrix);
+			} else if (a == 2) {
+				file = inputFile();
+				matrix = InputOutput.bacaFileSPL(file);
+				if (matrix.length != matrix[0].length-1) {
+					System.out.println("Solusi tidak dapat ditemukan dengan metode ini, silahkan gunakan metode yang lain.");
+					menuSPL();
+					break;
+				}
+				SPL.SPLCramer(matrix);
+			} else if (a == 3) {
+				menuSPL();
+			}
+			break;
+		case 5:
+			daftarMenu();
+			break;
+		}
+		return;
 	}
 
-	public static int menuInput() {
+	public static void menuDeterminan() {
 		int subMenu;
-
-		Scanner userInput = new Scanner(System.in);
-		System.out.println("\n1. Input dari Keyboard");
-		System.out.println("2. Input dari File\n==============");
-		System.out.print("Masukan : ");
-
-		subMenu = userInput.nextInt();
-
-		return subMenu;
-
-	}
-
-	public static String inputFile() {
-		Scanner userInput = new Scanner(System.in);
-		System.out.print("\nMasukkan nama file (.txt) (Cth : a1.txt) : ");
-
-		String subMenu = userInput.nextLine();
-
-		return subMenu;
-	}
-
-	public static int menuDeterminan() {
-		int subMenu;
+		double[][] matrix;
 
 		Scanner userInput = new Scanner(System.in);
 
@@ -61,15 +223,57 @@ public class Menu {
 		System.out.print("Pilihan metode : ");
 		subMenu = userInput.nextInt();
 		System.out.println();
-		if (subMenu == 3) {
-			daftarMenu();
+		while (subMenu < 1 || subMenu > 3) {
+			System.out.println("Masukan tidak valid, silahkan ulangi.");
+			System.out.println("MENU\n"
+					+ "1. Metode reduksi baris\n"
+					+ "2. Metode ekspansi kofaktor\n"
+					+ "3. Kembali ke menu utama");
+			System.out.print("Pilihan metode : ");
+			subMenu = userInput.nextInt();
+			System.out.println();
 		}
-
-		return subMenu;
+		int a = 0;
+		switch (subMenu) {
+		case 1:
+			a = menuInput();
+			if (a == 1) {
+				System.out.println("Masukkan ukuran matriks: ");
+				int n = userInput.nextInt();
+				matrix = InputOutput.readKeyboard(n, n);
+				Determinan.solDetOBE(matrix);
+			} else if (a == 2) {
+				String file = inputFile();
+				matrix = InputOutput.bacaFileSPL(file);
+				Determinan.solDetOBE(matrix);
+			} else if (a == 3) {
+				menuDeterminan();
+			}
+			break;
+		case 2:
+			a = menuInput();
+			if (a == 1) {
+				System.out.println("Masukkan ukuran matriks: ");
+				int n = userInput.nextInt();
+				matrix = InputOutput.readKeyboard(n, n);
+				Determinan.solDetCofactor(matrix);
+			} else if (a == 2) {
+				String file = inputFile();
+				matrix = InputOutput.bacaFileSPL(file);
+				Determinan.solDetCofactor(matrix);
+			} else if (a == 3) {
+				menuDeterminan();
+			}
+			break;
+		case 3:
+			daftarMenu();
+			break;
+		}
 	}
 
 	public static void menuInverse() {
 		int subMenu;
+		double[][] matrix;
 
 		Scanner userInput = new Scanner(System.in);
 
@@ -80,27 +284,80 @@ public class Menu {
 		System.out.print("Pilihan metode : ");
 		subMenu = userInput.nextInt();
 		System.out.println();
-		if (subMenu == 3) {
+		while (subMenu < 1 || subMenu > 3) {
+			System.out.println("Masukan tidak valid, silahkan ulangi.");
+			System.out.println("MENU\n"
+					+ "1. Metode eliminiasi Gauss-Jordan\n"
+					+ "2. Metode adjoint\n"
+					+ "3. Kembali ke menu utama");
+			System.out.print("Pilihan metode : ");
+			subMenu = userInput.nextInt();
+			System.out.println();
+		}
+		int a = 0;
+		switch (subMenu) {
+		case 1:
+			a = menuInput();
+			if (a == 1) {
+				System.out.println("Masukkan ukuran matriks: ");
+				int n = userInput.nextInt();
+				matrix = InputOutput.readKeyboard(n, n);
+				Inverse.solInvGJ(matrix);
+			} else if (a == 2) {
+				String file = inputFile();
+				matrix = InputOutput.bacaFileSPL(file);
+				Inverse.solInvGJ(matrix);
+			} else if (a == 3) {
+				menuInverse();
+			}
+			break;
+		case 2:
+			a = menuInput();
+			if (a == 1) {
+				System.out.println("Masukkan ukuran matriks: ");
+				int n = userInput.nextInt();
+				matrix = InputOutput.readKeyboard(n, n);
+				Inverse.solInvAdjoint(matrix);
+			} else if (a == 2) {
+				String file = inputFile();
+				matrix = InputOutput.bacaFileSPL(file);
+				Inverse.solInvAdjoint(matrix);
+			} else if (a == 3) {
+				menuInverse();
+			}
+		case 3:
 			daftarMenu();
+			break;
 		}
 	}
-
+	
 	public static void menuInterPolinom() {
-		int subMenu;
-
+		int a;
+		double x;
+		double[][] titik;
 		Scanner userInput = new Scanner(System.in);
-
-		System.out.println("MENU\n"
-				+ "0. Kembali ke menu utama");
-		System.out.print("Pilihan metode : ");
-		subMenu = userInput.nextInt();
-		System.out.println();
-		if (subMenu == 0) {
+		a = menuInput();
+		if (a == 1) {
+			System.out.println("Masukkan banyak titik: ");
+			int n = userInput.nextInt();
+			System.out.println("Masukkan titik-titik yang akan diinterpolasi: ");
+			titik = InputOutput.readKeyboard(n, 2);
+			System.out.println("Masukkan x yang akan ditaksir fungsinya: ");
+			x = userInput.nextInt();
+			InterPolinom.solInterPolinom(titik, x);
+		} else if (a == 2) {
+			String file = inputFile();
+			titik = InputOutput.bacaTitik(file);
+			x = titik[titik.length-1][0];
+			titik = Matriks.deleteLast(titik);
+			InterPolinom.solInterPolinom(titik, x);
+		} else if (a == 3) {
 			daftarMenu();
+			return;
 		}
 	}
 
-	public static void menuInterBS() {
+/*	public static void menuInterBS() {
 		int subMenu;
 
 		Scanner userInput = new Scanner(System.in);
@@ -128,24 +385,10 @@ public class Menu {
 		if (subMenu == 0) {
 			daftarMenu();
 		}
-	}
-
-	public static void outputFile(Matriks M) {
-        Scanner userInput = new Scanner(System.in);
-        System.out.print("Apakah Anda ingin menyimpannya dalam file (y/n)? ");
-        char text = userInput.next().charAt(0);
-        if (text == 'y' || text == 'Y') {
-            System.out.print("Masukan nama file (.txt): ");
-            String file = userInput.next();
-            Matriks.ketikFile(file, M);
-        }
-    }
-	 */
+	} */
+	
 	public static void daftarMenu() {
-		Algeo1.SPL spl = new Algeo1.SPL();
-		Algeo1.Matriks M = new Algeo1.Matriks();
 		int menu;
-		boolean gas = true;
 
 		Scanner userInput = new Scanner(System.in);
 
@@ -167,126 +410,29 @@ public class Menu {
 			System.out.print("Pilihan menu: ");
 			menu = userInput.nextInt();
 		}
-		
-		while(gas){
+
 		switch (menu) {
 			case 1:
-				//SPL spl = new SPL();
-				spl.menuSPL();
-				/*int a = menuSPL();
-				if (a == 1) {
-                    int inputspl = menuInput();
-                    if (inputspl == 1) {
-                        SPL.SPLGauss("x");
-                    } else if (inputspl == 2) {
-                        String filename = inputFile();
-                        try {
-                           Matriks inputFileSPL = new Matriks(filename);
-                            SPL.SPLGauss(inputFileSPL, "x");
-                        } catch (Exception e) {
-                            System.out.println(e.getMessage());
-                        }
-                    }
-                } else if (a == 2) {
-                    int inputspl = menuInput();
-                    if (inputspl == 1) {
-                        SPL.SPLGaussJordan("x");
-                    } else if (inputspl == 2) {
-                        String filename = inputFile();
-                        try {
-                            Matriks inputFileSPL = new Matriks(filename);
-                            SPL.SPLGaussJordan(inputFileSPL, "x");
-                        } catch (Exception e) {
-                            System.out.println(e.getMessage());
-                        }
-                    }
-
-                } else if (a == 3) {
-                    int inputspl = menuInput();
-                    if (inputspl == 1) {
-                        SPL.SPLInvers("x");
-                    } else if (inputspl == 2) {
-                        String filename = inputFile();
-                        try {
-                            Matriks inputFileSPL = new Matriks(filename);
-                            SPL.SPLInvers(inputFileSPL, "x");
-                        } catch (Exception e) {
-                            System.out.println(e.getMessage());
-                        }
-                    }
-                } else if (a == 4) {
-                    SPL.SPLCramer("x");
-                } else {
-                    System.out.println("Perintah tidak tersedia");
-                }*/
+				menuSPL();
 				break;
 			case 2:
-
-				M.MenuDeterminan();
-				
+				menuDeterminan();
 				break;
 			case 3:
-				/*menuInverse();
-				int c = menuInverse();
-					if (c == 1) {
-					int Invers.InversAdjoin();
-					} else if (c == 2) {
-					int Invers.InversGaussJordan();
-					} else {
-						System.out.println("Perintah tidak tersedia");
-					}
-				*/
+				menuInverse();
 				break;
 			case 4:
-				/*menuInterPolinom();
-				int d = menuInterPolinom();
-					if (d == 1) {
-					int Invers.InversAdjoin();
-					} else if (d == 2) {
-					int Invers.InversGaussJordan();
-					} else {
-						System.out.println("Perintah tidak tersedia");
-					}
-				*/
+				menuInterPolinom();
 				break;
 			case 5:
-				 /*menuInterBS();
-				int e = menuInterBS();;
-					if (c == 1) {
-					int Invers.InversAdjoin();
-					} else if (c == 2) {
-					int Invers.InversGaussJordan();
-					} else {
-						System.out.println("Perintah tidak tersedia");
-					}
-				*/
+				 
 				break;
 			case 6:
-				/* menuRegresi();
-				int f = menuRegresi();
-					if (c == 1) {
-					int Invers.InversAdjoin();
-					} else if (c == 2) {
-					int Invers.InversGaussJordan();
-					} else {
-						System.out.println("Perintah tidak tersedia");
-					}
-				*/
+				 
 				break;
 			case 7:
 				System.exit(0);
 				break;
-			default : 
-			System.out.println();
-			System.out.println("Menu Tidak Valid");
-			}
-
-			System.out.println();
-            System.out.print("Apakah anda ingin Memulai lagi perhitungannya(y/n) ? ");
-            char mulai = userInput.next().charAt(0);
-            if (mulai != 'y' && mulai != 'Y') {
-                gas = false;
-            }
 		}
 
 	}
